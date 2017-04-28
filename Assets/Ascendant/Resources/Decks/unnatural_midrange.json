@@ -1,0 +1,38 @@
+{
+    "name": "Unnatural Midrange",
+    "memorizedBiome": "NBU001",
+    "memorizedAum": "NBU008",
+    "cards": [
+        {
+            "name": "NBC001",
+            "count": 6
+        }, {
+            "name": "NBC002",
+            "count": 4
+        }, {
+            "name": "NBC005",
+            "count":8
+        }, {
+            "name": "NBC016",
+            "count":4
+        }, {
+            "name": "NBU005",
+            "count":2
+        }, {
+            "name": "NBU006",
+            "count":2
+        }, {
+            "name": "NBU008",
+            "count":8
+        }, {
+            "name": "NBU010",
+            "count":3
+        }, {
+            "name": "NBU014",
+            "count":10
+        }, {
+            "name": "NBU015",
+            "count":3
+        }
+    ]
+}

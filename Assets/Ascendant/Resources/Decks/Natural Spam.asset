@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63455d38c8b102a479346bac1c0912cb, type: 3}
+  m_Name: Natural Spam
+  m_EditorClassIdentifier: 
+  cards:
+  - card: {fileID: 11400000, guid: 502aea8de9a6dd846ba307f658b58ca0, type: 2}
+    amount: 5
+  - card: {fileID: 11400000, guid: a13b0246db2061944b858a49ba1e706c, type: 2}
+    amount: 35
+  - card: {fileID: 11400000, guid: b9bc685c1cffb06409b005ff8f226a3b, type: 2}
+    amount: 5
