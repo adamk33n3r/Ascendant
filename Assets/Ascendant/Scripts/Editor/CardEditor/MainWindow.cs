@@ -22,7 +22,7 @@ namespace Ascendant.Scripts.Editor.CardEditor {
         private string[] subTypeNames;
 
         public void OnEnable() {
-//            this.selectedSet = null;
+            this.selectedSet = null;
             this.renamingSet = false;
             this.superTypes = Asset.GetAllOfType<ScriptableObjects.SuperType>().OrderBy(superType => superType.name);
             this.superTypeNames = this.superTypes.Select(type => type.name).ToArray();
@@ -77,9 +77,16 @@ namespace Ascendant.Scripts.Editor.CardEditor {
                     if (GUILayout.Button("Rename Set")) {
                         this.renamingSet = true;
                     }
-                    EditorGUI.BeginDisabledGroup(true);
-                    GUILayout.Button("Delete Set");
-                    EditorGUI.EndDisabledGroup();
+                    if (GUILayout.Button("Delete Set")) {
+                        if (EditorUtility.DisplayDialog("Delete Set",
+                            "Are you sure you want to delete this set and all of its cards?", "I'm sure! Burninate!", "Now that I think about it...")) {
+                            foreach (CardAsset card in this.selectedSet.cardAssets) {
+                                Asset.Delete(card);
+                            }
+                            Asset.Delete(this.selectedSet);
+                            this.selectedSet = null;
+                        }
+                    }
                 }
                 EditorGUILayout.EndHorizontal();
 
@@ -125,14 +132,12 @@ namespace Ascendant.Scripts.Editor.CardEditor {
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal();
             {
-                EditorGUI.BeginDisabledGroup(false);
                 if (GUILayout.Button("Creat New Set", GUILayout.Height(25))) {
                     PopupWindow.Show(this.createSetButtonRect, new CreateSetPopup(this.createSetButtonRect));
                 }
                 if (Event.current.type == EventType.Repaint) {
                     this.createSetButtonRect = GUILayoutUtility.GetLastRect();
                 }
-                EditorGUI.EndDisabledGroup();
             }
             EditorGUILayout.EndHorizontal();
         }

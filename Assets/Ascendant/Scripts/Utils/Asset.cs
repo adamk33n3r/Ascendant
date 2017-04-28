@@ -1,4 +1,5 @@
 using Ascendant.ScriptableObjects;
+using UnityEditor;
 using UnityEngine;
 
 namespace Ascendant.Scripts.Utils {
@@ -11,6 +12,10 @@ namespace Ascendant.Scripts.Utils {
 
         public static T[] GetAllOfType<T>() where T : Object {
             return Resources.FindObjectsOfTypeAll<T>();
+        }
+
+        public static void Delete(Object obj) {
+            AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(obj));
         }
     }
 }
