@@ -1,0 +1,23 @@
+{
+    "name": "Natural Spam",
+    "memorizedBiome": "NBN001",
+    "memorizedAum": "NBN005",
+    "cards": [
+        {
+            "name": "NBN001",
+            "count": 5
+        }, {
+            "name": "NBN002",
+            "count": 10
+        }, {
+            "name": "NBN005",
+            "count":10
+        }, {
+            "name": "NBN006",
+            "count":5
+        }, {
+            "name": "NBN012",
+            "count":20
+        }
+    ]
+}
