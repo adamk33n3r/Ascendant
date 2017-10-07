@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FieldManager : MonoBehaviour {
 	public void Start () {
+		// Keep code. Reference for spacing elements in canvas
+		/*
 		RectTransform rect = GetComponent<RectTransform>();
 		Vector2 bottomLeft = rect.offsetMin;
 		Vector2 topRight = rect.offsetMax;
@@ -24,6 +26,7 @@ public class FieldManager : MonoBehaviour {
 			);
 			childNum++;
 		}
+		*/
 	}
 	
 	public void Update () {

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Ascendant.ScriptableObjects;
-using Ascendant.Scripts.Cards;
 using UnityEngine;
 
 namespace Ascendant.Scripts.Logic {
@@ -12,9 +11,9 @@ namespace Ascendant.Scripts.Logic {
         [SerializeField]
         protected Deck deckAsset;
 
+        protected HandManager handManager;
+
         [Header("Visual References")]
-        [SerializeField]
-        protected Visual.HandManager handManager;
         [SerializeField]
         protected Visual.DeckManager visualDeckManager;
 
@@ -22,14 +21,20 @@ namespace Ascendant.Scripts.Logic {
 
         private Action cbOnDrawCard;
 
+		public void Awake() {
+			Container.Register(this);
+		}
+
         public void Start () {
+			Container.Dump();
+			this.handManager = Container.Get<HandManager>();
             this.Cards = new Stack<CardAsset>();
             foreach (CardAmountPair cardAmountPair in this.deckAsset.cards) {
                 for (int i = 0; i < cardAmountPair.amount; i++) {
                     this.Cards.Push(cardAmountPair.cardAsset);
                 }
             }
-            this.visualDeckManager.RegisterDeckClickedCallback(Draw);
+            //this.visualDeckManager.RegisterDeckClickedCallback(Draw);
         }
 
         public GameObject CreateNextCard() {
@@ -37,20 +42,21 @@ namespace Ascendant.Scripts.Logic {
 			//CardManager cardManager = card.GetComponent<CardManager>();
 			//cardManager.CardAsset = this.Cards.Pop();
 			//return card;
-			Debug.LogError("what?");
+			Debug.LogError("what is this for?");
 			return null;
         }
 
-        private void Draw() {
+        public bool Draw() {
             CardAsset cardAsset = this.Cards.Pop();
-            // TODO: convert this to a command
-            if (!this.handManager.AddCard(cardAsset)) {
-                return;
-            }
-            this.Cards.Push(cardAsset);
+			bool drawn = !this.handManager.AddCard(cardAsset);
+			if (!drawn) {
+				this.Cards.Push(cardAsset);
+				return drawn;
+			}
             if (this.cbOnDrawCard != null) {
                 this.cbOnDrawCard.Invoke();
             }
+			return true;
         }
 
         public void RegisterDrawCardCallback(Action callback) {

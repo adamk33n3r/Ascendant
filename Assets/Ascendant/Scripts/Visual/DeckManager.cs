@@ -5,9 +5,9 @@ using UnityEngine;
 namespace Ascendant.Scripts.Visual {
     public class DeckManager : MonoBehaviour {
         public float thicknessOfOneCard = 0.012f;
-        public Logic.DeckManager deckManager;
+        public Logic.DeckManager logicDeckManager;
 
-        private Action cbDeckClicked;
+		private CommandBus bus;
 
         private int cardsInDeck;
         public int CardsInDeck {
@@ -19,24 +19,18 @@ namespace Ascendant.Scripts.Visual {
         }
 
         public void Start () {
+			this.bus = Container.Get<CommandBus>();
             this.CardsInDeck = 40;
-            this.deckManager.RegisterDrawCardCallback(() => {
+            this.logicDeckManager.RegisterDrawCardCallback(() => {
                 this.CardsInDeck--;
             });
         }
 
-        public void RegisterDeckClickedCallback(Action callback) {
-            this.cbDeckClicked += callback;
-        }
-
         public void OnClick() {
-            CommandBus.Add(new LogCommand("before delay"));
-            CommandBus.Add(new DelayCommand(2f));
-            CommandBus.Add(new LogCommand("after 2 second delay"));
-            // Call callbacks
-            if (this.cbDeckClicked != null) {
-                this.cbDeckClicked();
-            }
+            //bus.Add(new LogCommand("before delay"));
+            //bus.Add(new DelayCommand(2f));
+            //bus.Add(new LogCommand("after 2 second delay"));
+			bus.Add(new DrawCardCommand());
         }
     }
 }

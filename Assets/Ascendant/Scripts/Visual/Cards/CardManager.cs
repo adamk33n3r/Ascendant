@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Ascendant.ScriptableObjects;
 using Ascendant.Scripts.Enums;
 
-namespace Ascendant.Scripts.Cards {
+namespace Ascendant.Scripts.Visual.Cards {
     public class CardManager : MonoBehaviour {
         public CardAsset CardAsset {
             set {
@@ -20,6 +21,16 @@ namespace Ascendant.Scripts.Cards {
         public Text defenseText;
         [Header("Graphic References")]
         public Image cardGraphic;
+
+		private Action<CardManager> cbCardClicked;
+
+        public void RegisterDeckClickedCallback(Action<CardManager> callback) {
+            this.cbCardClicked += callback;
+        }
+
+		public void OnClick() {
+			this.cbCardClicked(this);
+		}
 
         private void Setup (CardAsset cardAsset) {
             // Setup texts
