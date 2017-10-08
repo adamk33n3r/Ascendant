@@ -28,8 +28,14 @@ namespace Ascendant.Scripts.Visual.Cards {
             this.cbCardClicked += callback;
         }
 
+		public void UnregisterDeckClickedCallback(Action<CardManager> callback) {
+			this.cbCardClicked -= callback;
+		}
+
 		public void OnClick() {
-			this.cbCardClicked(this);
+			if (this.cbCardClicked != null) {
+				this.cbCardClicked(this);
+			}
 		}
 
         private void Setup (CardAsset cardAsset) {

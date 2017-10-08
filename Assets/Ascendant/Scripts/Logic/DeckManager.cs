@@ -6,8 +6,6 @@ using UnityEngine;
 namespace Ascendant.Scripts.Logic {
     public class DeckManager : MonoBehaviour {
         [Header("Assets")]
-        //[SerializeField]
-        //protected GameObject cardPrefab;
         [SerializeField]
         protected Deck deckAsset;
 
@@ -26,39 +24,61 @@ namespace Ascendant.Scripts.Logic {
 		}
 
         public void Start () {
-			Container.Dump();
 			this.handManager = Container.Get<HandManager>();
-            this.Cards = new Stack<CardAsset>();
+            Cards = new Stack<CardAsset>();
             foreach (CardAmountPair cardAmountPair in this.deckAsset.cards) {
                 for (int i = 0; i < cardAmountPair.amount; i++) {
-                    this.Cards.Push(cardAmountPair.cardAsset);
+                    Cards.Push(cardAmountPair.cardAsset);
                 }
             }
-            //this.visualDeckManager.RegisterDeckClickedCallback(Draw);
+			this.Shuffle();
+			foreach (CardAsset card in Cards) {
+				print(card.name);
+			}
+			//this.visualDeckManager.RegisterDeckClickedCallback(Draw);
         }
 
         public GameObject CreateNextCard() {
 			//GameObject card = Instantiate(this.cardPrefab, this.transform.position, Quaternion.identity);
 			//CardManager cardManager = card.GetComponent<CardManager>();
-			//cardManager.CardAsset = this.Cards.Pop();
+			//cardManager.CardAsset = Cards.Pop();
 			//return card;
 			Debug.LogError("what is this for?");
 			return null;
         }
 
         public bool Draw() {
-            CardAsset cardAsset = this.Cards.Pop();
-			bool drawn = !this.handManager.AddCard(cardAsset);
-			if (!drawn) {
-				this.Cards.Push(cardAsset);
-				return drawn;
+			print("drawing card");
+			if (Cards.Count == 0) {
+				print("no cards left");
+				return false;
 			}
+            CardAsset cardAsset = Cards.Pop();
+			print(cardAsset.name);
+			if (!this.handManager.AddCard(cardAsset)) {
+				print("didnt draw. hand too full. putting back on deck");
+				Cards.Push(cardAsset);
+				return false;
+			}
+			print("drew card");
             if (this.cbOnDrawCard != null) {
                 this.cbOnDrawCard.Invoke();
             }
 			return true;
         }
 
+		public void Shuffle() {
+			CardAsset[] cards = Cards.ToArray();
+			for (int i = 0; i < cards.Length; i++) {
+				int num = UnityEngine.Random.Range(0, cards.Length);
+				CardAsset temp = cards[i];
+				cards[i] = cards[num];
+				cards[num] = temp;
+			}
+			Cards = new Stack<CardAsset>(cards);
+		}
+
+		// TODO: Replace with events
         public void RegisterDrawCardCallback(Action callback) {
             this.cbOnDrawCard += callback;
         }

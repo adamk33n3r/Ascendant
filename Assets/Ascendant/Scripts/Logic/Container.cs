@@ -24,7 +24,7 @@ public static class Container {
 	public static object Get(string key) {
 		object obj;
 		if (!classMap.TryGetValue(key, out obj)) {
-			throw new Exception(string.Format("{0} not found in the container", key));
+			throw new Exception(string.Format("{0} not found in the container. Make sure you Register it in Awake and Get it in Start!", key));
 		}
 		return obj;
 	}
