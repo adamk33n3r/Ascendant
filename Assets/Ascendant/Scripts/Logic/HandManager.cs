@@ -4,15 +4,24 @@ using UnityEngine;
 using Ascendant.ScriptableObjects;
 
 namespace Ascendant.Scripts.Logic {
-	public class HandManager : MonoBehaviour {
+	public class HandManager : BaseBehaviour {
         [Header("Hand Info")]
         public int maxCount = 7;
 
 		private List<CardAsset> cards = new List<CardAsset>();
         private Action<CardAsset> cbOnCardDrawn;
 
+		private Visual.HandManager visual;
+
 		public void Awake() {
 			Container.Register(this);
+			Events.Listen("test", (data) => {
+				print("test event was fired", data);
+			});
+		}
+
+		public void Start() {
+			this.visual = Container.Get<Visual.HandManager>();
 		}
 
 		public bool AddCard(CardAsset cardAsset) {
@@ -22,6 +31,10 @@ namespace Ascendant.Scripts.Logic {
 			this.cards.Add(cardAsset);
 			this.cbOnCardDrawn(cardAsset);
 			return true;
+		}
+
+		public CardAsset TakeSelectedCard() {
+			return this.visual.TakeSelectedCard().CardAsset;
 		}
 
 		// TODO: Maybe just a global event system?

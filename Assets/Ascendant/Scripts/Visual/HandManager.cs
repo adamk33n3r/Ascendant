@@ -33,6 +33,9 @@ namespace Ascendant.Scripts.Visual {
 		}
 
 		public CardManager TakeSelectedCard() {
+			if (this.selectedCard == null) {
+				return null;
+			}
 			CardManager selectedCard = this.selectedCard;
 			RemoveCard(this.selectedCard);
 			return selectedCard;
@@ -45,8 +48,11 @@ namespace Ascendant.Scripts.Visual {
 			}
 
 			// Remove callback
-			card.UnregisterDeckClickedCallback(OnCardClicked);
+			card.UnregisterCardClickedCallback(OnCardClicked);
 			bool removed = this.cards.Remove(card.transform);
+
+			// Destroy game object
+			Destroy(card.gameObject);
 
 			// Reset positions
 			SetCardPositions();
@@ -57,7 +63,7 @@ namespace Ascendant.Scripts.Visual {
             GameObject card = Instantiate(this.cardPrefab);
 			CardManager manager = card.GetComponent<CardManager>();
 			manager.CardAsset = cardAsset;
-			manager.RegisterDeckClickedCallback(OnCardClicked);
+			manager.RegisterCardClickedCallback(OnCardClicked);
             card.transform.SetParent(this.transform);
             card.GetComponentInChildren<Canvas>().sortingOrder = this.cards.Count;
             this.cards.Add(card.transform);

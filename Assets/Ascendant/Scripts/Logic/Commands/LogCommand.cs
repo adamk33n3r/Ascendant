@@ -10,9 +10,8 @@ namespace Ascendant.Scripts.Logic.Commands {
             this.text = text;
         }
 
-        public override void Execute (Action doneCallback) {
+        public override void Execute() {
             Debug.Log(this.text);
-            doneCallback();
         }
     }
 }

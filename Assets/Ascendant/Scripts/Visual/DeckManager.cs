@@ -27,10 +27,11 @@ namespace Ascendant.Scripts.Visual {
         }
 
         public void OnClick() {
-            //bus.Add(new LogCommand("before delay"));
-            //bus.Add(new DelayCommand(2f));
-            //bus.Add(new LogCommand("after 2 second delay"));
+			bus.Add(new LogCommand("before delay"));
+			bus.Add(new DelayCommand(2f));
+			bus.Add(new LogCommand("after 2 second delay"));
 			bus.Add(new DrawCardCommand());
+			Logic.Events.Fire("test", 4);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Ascendant.Scripts.Logic {
         [Header("Assets")]
         [SerializeField]
         protected Deck deckAsset;
+		// TODO: Look into loading cards and decks from google docs
 
         protected HandManager handManager;
 
@@ -32,9 +33,9 @@ namespace Ascendant.Scripts.Logic {
                 }
             }
 			this.Shuffle();
-			foreach (CardAsset card in Cards) {
-				print(card.name);
-			}
+			//foreach (CardAsset card in Cards) {
+			//	print(card.name);
+			//}
 			//this.visualDeckManager.RegisterDeckClickedCallback(Draw);
         }
 

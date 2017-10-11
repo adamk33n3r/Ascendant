@@ -1,9 +1,8 @@
 using System;
-using Ascendant.ScriptableObjects;
 using UnityEngine;
 
 namespace Ascendant.Scripts.Logic.Commands {
-    public class DrawCardCommand : Command {
+    public class DrawCardCommand : AsyncCommand {
         private DeckManager deckManager;
 
         public DrawCardCommand() {

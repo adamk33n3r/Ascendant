@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Ascendant.Scripts.Logic {
 	public class Initialization : MonoBehaviour {
@@ -8,6 +7,7 @@ namespace Ascendant.Scripts.Logic {
 
 		public void Start() {
 			Random.InitState(Seed);
+            DOTween.Init();
 		}
 	}
 }

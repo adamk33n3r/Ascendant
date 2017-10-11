@@ -7,10 +7,13 @@ using Ascendant.Scripts.Enums;
 namespace Ascendant.Scripts.Visual.Cards {
     public class CardManager : MonoBehaviour {
         public CardAsset CardAsset {
+			get { return this.cardAsset; }
             set {
+				this.cardAsset = value;
                 Setup(value);
             }
         }
+		private CardAsset cardAsset;
 
         [Header("Text Component References")]
         public Text nameText;
@@ -24,11 +27,11 @@ namespace Ascendant.Scripts.Visual.Cards {
 
 		private Action<CardManager> cbCardClicked;
 
-        public void RegisterDeckClickedCallback(Action<CardManager> callback) {
+        public void RegisterCardClickedCallback(Action<CardManager> callback) {
             this.cbCardClicked += callback;
         }
 
-		public void UnregisterDeckClickedCallback(Action<CardManager> callback) {
+		public void UnregisterCardClickedCallback(Action<CardManager> callback) {
 			this.cbCardClicked -= callback;
 		}
 
