@@ -11,7 +11,7 @@ namespace Ascendant.Scripts.Visual {
         public Transform first;
         public Transform last;
 
-        [Header("Hand Info")]
+        [Header("Prefabs")]
         public GameObject cardPrefab;
 
         private readonly List<Transform> cards = new List<Transform>();

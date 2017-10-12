@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Ascendant.Scripts.Logic.Commands;
 
 namespace Ascendant.Scripts.Visual {
-	public class FieldManager : MonoBehaviour {
+	public class FieldManager : BaseBehaviour {
+		public bool EnableGeneration = false;
 		public GameObject FieldLocationPrefab;
 		public int Rows = 4;
 		public int Columns = 9;
@@ -13,16 +11,15 @@ namespace Ascendant.Scripts.Visual {
 		public float Height = 5f;
 		public float Padding = 1f;
 
-		//private Logic.HandManager handManager;
-		private CommandBus bus;
+        [Header("Prefabs")]
+        public GameObject cardPrefab;
 
 		public void Awake() {
 			Container.Register(this);
 		}
 
 		public void Start() {
-			this.bus = Container.Get<CommandBus>();
-			//this.handManager = Container.Get<Logic.HandManager>();
+			if (!EnableGeneration) return;
 
 			Vector2 offset = new Vector2(
 				((Width + Padding) * Columns - Padding) / 2 - Width / 2,
@@ -40,15 +37,7 @@ namespace Ascendant.Scripts.Visual {
 						Quaternion.identity,
 						this.transform
 					);
-					fieldPosition.name = string.Format("{0},{1}", row, column);
-					EventTrigger eventTrigger = fieldPosition.GetComponent<EventTrigger>();
-					EventTrigger.Entry entry = new EventTrigger.Entry();
-					entry.eventID = EventTriggerType.PointerClick;
-					entry.callback = new EventTrigger.TriggerEvent();
-					entry.callback.AddListener((eventData) => {
-						OnFieldLocationClicked(fieldPosition);
-					});
-					eventTrigger.triggers.Add(entry);
+					fieldPosition.name = string.Format("{0},{1}", column, row);
 				}
 			}
 
@@ -76,37 +65,6 @@ namespace Ascendant.Scripts.Visual {
 				childNum++;
 			}
 			*/
-		}
-
-		public FieldLocationManager GetLocation() {
-			return null;
-		}
-
-		public void OnFieldLocationClicked(GameObject clicked) {
-			print("clicked on field location");
-			print(clicked.name);
-
-			// VisualField -> LogicHand -> LogicField -> VisualField
-			// TODO: Make this a DrawCommand?
-			//bus.Add(new PlayCardCommand());
-			Cards.CardManager selectedCard = null;//this.handManager.TakeSelectedCard();
-
-			// If there isn't a selected card do nothing
-			if (selectedCard == null) {
-				return;
-			}
-
-			// If there is already a card here do nothing
-			// TODO: or do action on card when thats a thing. although that would be clicking on the card
-			if (clicked.GetComponentInChildren<Cards.CardManager>() != null) {
-				print("already card here");
-				return;
-			}
-
-			// Remove card from hand
-
-			selectedCard.transform.SetParent(clicked.transform);
-			selectedCard.transform.localPosition = Vector3.zero;
 		}
 	}
 }

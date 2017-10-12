@@ -4,7 +4,13 @@ using UnityEngine;
 using Ascendant.ScriptableObjects;
 
 namespace Ascendant.Scripts.Logic.Commands {
-	public class PlayCardCommand : AsyncCommand {
+
+	/// <summary>
+	/// Ask HandManager for selected card.
+	/// Check if can place card on location.
+	/// Place card.
+	/// </summary>
+	public class PlayCardCommand : Command {
 		private FieldLocationManager fieldLocation;
 		private HandManager handManager;
 
@@ -13,26 +19,24 @@ namespace Ascendant.Scripts.Logic.Commands {
 			this.handManager = Container.Get<HandManager>();
 		}
 
-		public override void Execute(Action doneCallback) {
+		public override void Execute() {
 			// Ask hand manager for its selected card
 			// TODO: probably should change this to check for both if there is one to take,
 			// and if there is to CHECK if it can be played before ACTUALLY taking it out of
-			// the hand.
-			CardAsset card = this.handManager.TakeSelectedCard();
+			// the hand. Then you don't have to put it back and rearrange cards.
+			CardAsset card = this.handManager.GetSelectedCard();
 
 			// If there isn't one, bail
 			if (card == null) {
-				doneCallback();
 				return;
 			}
 
-			// Tell field location to play card
+			// Actually take the card and tell field location to play card
+			card = this.handManager.TakeSelectedCard();
 			bool played = this.fieldLocation.PlayCard(card);
 			if (!played) {
 				this.handManager.AddCard(card);
 			}
-			// If it says you can't, undo stuff
-			doneCallback();
 		}
 	}
 }

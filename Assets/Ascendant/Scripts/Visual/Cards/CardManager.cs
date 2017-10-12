@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using Ascendant.ScriptableObjects;
 using Ascendant.Scripts.Enums;
 
 namespace Ascendant.Scripts.Visual.Cards {
-    public class CardManager : MonoBehaviour {
+    public class CardManager : BaseBehaviour, IPointerClickHandler {
         public CardAsset CardAsset {
 			get { return this.cardAsset; }
             set {
@@ -35,13 +36,7 @@ namespace Ascendant.Scripts.Visual.Cards {
 			this.cbCardClicked -= callback;
 		}
 
-		public void OnClick() {
-			if (this.cbCardClicked != null) {
-				this.cbCardClicked(this);
-			}
-		}
-
-        private void Setup (CardAsset cardAsset) {
+        private void Setup(CardAsset cardAsset) {
             // Setup texts
             this.nameText.text = cardAsset.name;
             this.costText.text = cardAsset.cost.ToString();
@@ -53,5 +48,13 @@ namespace Ascendant.Scripts.Visual.Cards {
             // Setup graphics
             this.cardGraphic.color = cardAsset.biome.ToColor();
         }
-    }
+
+		#region Events
+		public void OnPointerClick(PointerEventData eventData) {
+			if (this.cbCardClicked != null) {
+				this.cbCardClicked(this);
+			}
+		}
+		#endregion
+	}
 }

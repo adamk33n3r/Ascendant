@@ -20,18 +20,14 @@ namespace Ascendant.Scripts.Visual {
 
         public void Start () {
 			this.bus = Container.Get<CommandBus>();
-            this.CardsInDeck = 40;
+            CardsInDeck = 40;
             this.logicDeckManager.RegisterDrawCardCallback(() => {
-                this.CardsInDeck--;
+                CardsInDeck--;
             });
         }
 
         public void OnClick() {
-			bus.Add(new LogCommand("before delay"));
-			bus.Add(new DelayCommand(2f));
-			bus.Add(new LogCommand("after 2 second delay"));
-			bus.Add(new DrawCardCommand());
-			Logic.Events.Fire("test", 4);
-        }
+			this.bus.Add(new DrawCardCommand());
+		}
     }
 }

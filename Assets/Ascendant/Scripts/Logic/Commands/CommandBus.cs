@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Ascendant.Scripts.Logic.Commands {
     public class CommandBus : BaseBehaviour {
-        private readonly Queue<Command> CommandQueue = new Queue<Command>();
-		private bool CommandIsRunning = false;
+        private readonly Queue<Command> commandQueue = new Queue<Command>();
+		private bool commandIsRunning = false;
 
 		public void Awake() {
 			Container.Register(this);
@@ -14,11 +14,11 @@ namespace Ascendant.Scripts.Logic.Commands {
 		}
 
 		public void Update() {
-            if (CommandIsRunning || CommandQueue.Count == 0) {
+            if (this.commandIsRunning || this.commandQueue.Count == 0) {
                 return;
             }
-			CommandIsRunning = true;
-			Command command = CommandQueue.Dequeue();
+			this.commandIsRunning = true;
+			Command command = this.commandQueue.Dequeue();
 			if (command is AsyncCommand) {
 				((AsyncCommand) command).Execute(DoneCallback);
 			} else {
@@ -28,11 +28,11 @@ namespace Ascendant.Scripts.Logic.Commands {
 		}
 
         public void Add(Command command) {
-            CommandQueue.Enqueue(command);
+            this.commandQueue.Enqueue(command);
         }
 
 		private void DoneCallback() {
-			CommandIsRunning = false;
+			this.commandIsRunning = false;
 		}
     }
 }

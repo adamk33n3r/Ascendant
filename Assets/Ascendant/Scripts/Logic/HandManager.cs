@@ -33,8 +33,20 @@ namespace Ascendant.Scripts.Logic {
 			return true;
 		}
 
+		public CardAsset GetSelectedCard() {
+			Visual.Cards.CardManager card = this.visual.GetSelectedCard();
+			if (card == null) {
+				return null;
+			}
+			return card.CardAsset;
+		}
+
 		public CardAsset TakeSelectedCard() {
-			return this.visual.TakeSelectedCard().CardAsset;
+			Visual.Cards.CardManager card = this.visual.TakeSelectedCard();
+			if (card == null) {
+				return null;
+			}
+			return card.CardAsset;
 		}
 
 		// TODO: Maybe just a global event system?

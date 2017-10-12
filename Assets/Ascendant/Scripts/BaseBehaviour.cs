@@ -7,7 +7,7 @@ namespace Ascendant.Scripts {
 		public static void print(params object[] messages) {
 			MonoBehaviour.print(
 				string.Join(
-					", ",
+					" ",
 					messages.Select((message) => message.ToString()).ToArray()
 				)
 			);
