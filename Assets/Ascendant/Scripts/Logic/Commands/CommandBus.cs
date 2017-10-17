@@ -8,9 +8,6 @@ namespace Ascendant.Scripts.Logic.Commands {
 
 		public void Awake() {
 			Container.Register(this);
-			Events.Listen("test", (data) => {
-				print("test event was fired. i am command bus");
-			});
 		}
 
 		public void Update() {

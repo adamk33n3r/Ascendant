@@ -16,9 +16,8 @@ namespace Ascendant.Scripts.Logic {
         [SerializeField]
         protected Visual.DeckManager visualDeckManager;
 
-        public Stack<CardAsset> Cards { get; protected set; }
-
-        private Action cbOnDrawCard;
+		protected Stack<CardAsset> Cards = new Stack<CardAsset>();
+		public int CardCount { get { return Cards.Count; } }
 
 		public void Awake() {
 			Container.Register(this);
@@ -26,13 +25,13 @@ namespace Ascendant.Scripts.Logic {
 
         public void Start () {
 			this.handManager = Container.Get<HandManager>();
-            Cards = new Stack<CardAsset>();
             foreach (CardAmountPair cardAmountPair in this.deckAsset.cards) {
                 for (int i = 0; i < cardAmountPair.amount; i++) {
                     Cards.Push(cardAmountPair.cardAsset);
                 }
             }
-			this.Shuffle();
+			Shuffle();
+			print(Cards.Count);
 			//foreach (CardAsset card in Cards) {
 			//	print(card.name);
 			//}
@@ -50,21 +49,21 @@ namespace Ascendant.Scripts.Logic {
 
         public bool Draw() {
 			print("drawing card");
+			print(Cards.Count);
 			if (Cards.Count == 0) {
 				print("no cards left");
 				return false;
 			}
             CardAsset cardAsset = Cards.Pop();
 			print(cardAsset.name);
+			// TODO: maybe move this into the hand manager to listen the event
 			if (!this.handManager.AddCard(cardAsset)) {
 				print("didnt draw. hand too full. putting back on deck");
 				Cards.Push(cardAsset);
 				return false;
 			}
 			print("drew card");
-            if (this.cbOnDrawCard != null) {
-                this.cbOnDrawCard.Invoke();
-            }
+			EventManager.Fire(Events.CARD_DRAWN, cardAsset);
 			return true;
         }
 
@@ -78,10 +77,5 @@ namespace Ascendant.Scripts.Logic {
 			}
 			Cards = new Stack<CardAsset>(cards);
 		}
-
-		// TODO: Replace with events
-        public void RegisterDrawCardCallback(Action callback) {
-            this.cbOnDrawCard += callback;
-        }
     }
 }

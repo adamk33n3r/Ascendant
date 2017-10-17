@@ -1,33 +1,17 @@
-using System;
+using UnityEngine.EventSystems;
 using Ascendant.Scripts.Logic.Commands;
-using UnityEngine;
 
 namespace Ascendant.Scripts.Visual {
-    public class DeckManager : MonoBehaviour {
-        public float thicknessOfOneCard = 0.012f;
-        public Logic.DeckManager logicDeckManager;
-
+    public class DeckManager : BaseBehaviour, IPointerClickHandler {
 		private CommandBus bus;
-
-        private int cardsInDeck;
-        public int CardsInDeck {
-            get { return this.cardsInDeck; }
-            set {
-                this.cardsInDeck = value;
-                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -this.thicknessOfOneCard * value);
-            }
-        }
 
         public void Start () {
 			this.bus = Container.Get<CommandBus>();
-            CardsInDeck = 40;
-            this.logicDeckManager.RegisterDrawCardCallback(() => {
-                CardsInDeck--;
-            });
         }
 
-        public void OnClick() {
+		public void OnPointerClick(PointerEventData eventData) {
+			print("CLICKED");
 			this.bus.Add(new DrawCardCommand());
 		}
-    }
+	}
 }

@@ -2,10 +2,14 @@ using System;
 using System.Collections.Generic;
 
 namespace Ascendant.Scripts.Logic {
-	// TODO: Maybe actually bring back interface/abstract class for "data" types to send to handlers
-	// Although maybe events shouldn't need data to be passed?
-	public delegate void EventDelegate(object data);
+	public delegate void EventDelegate(object data = null);
 	public delegate void UnregisterListenerDelegate();
+
+	public enum Events {
+		CARD_DRAWN,
+		CARD_PLAYED,
+		CARD_DISCARDED
+	}
 
 	/// <summary>
 	/// Register events to listen to.
@@ -14,8 +18,8 @@ namespace Ascendant.Scripts.Logic {
 	/// <c>Unregister</c> with the key and method you used. Doing the latter will mean you'll have to
 	/// not use lambdas.
 	/// </summary>
-	public static class Events {
-		private static Dictionary<string, List<EventDelegate>> EventMap = new Dictionary<string, List<EventDelegate>>();
+	public static class EventManager {
+		private static Dictionary<Events, List<EventDelegate>> EventMap = new Dictionary<Events, List<EventDelegate>>();
 
 		/// <summary>
 		/// Listen to an event
@@ -23,13 +27,11 @@ namespace Ascendant.Scripts.Logic {
 		/// <param name="eventKey">The event to listen to</param>
 		/// <param name="eventDelegate">The handler</param>
 		/// <returns></returns>
-		public static UnregisterListenerDelegate Listen(string eventKey, EventDelegate eventDelegate) {
+		public static UnregisterListenerDelegate Listen(Events eventKey, EventDelegate eventDelegate) {
 			if (!EventMap.ContainsKey(eventKey)) {
 				EventMap[eventKey] = new List<EventDelegate>();
 			}
 			EventMap[eventKey].Add(eventDelegate);
-			string s = "hello";
-			s.EndsWith("");
 			return () => { Unregister(eventKey, eventDelegate); };
 		}
 
@@ -37,8 +39,7 @@ namespace Ascendant.Scripts.Logic {
 		/// Fires an event
 		/// </summary>
 		/// <param name="eventKey">The event to fire</param>
-		/// <param name="data">Data to send the event</param>
-		public static void Fire(string eventKey, object data = null) {
+		public static void Fire(Events eventKey, object data = null) {
 			List<EventDelegate> delegates;
 			EventMap.TryGetValue(eventKey, out delegates);
 			if (delegates != null) {
@@ -48,11 +49,11 @@ namespace Ascendant.Scripts.Logic {
 			}
 		}
 
-		public static bool Unregister(string eventKey, EventDelegate eventDelegate) {
+		public static bool Unregister(Events eventKey, EventDelegate eventDelegate) {
 			return EventMap[eventKey].Remove(eventDelegate);
 		}
 
-		public static void UnregisterAll(string eventKey) {
+		public static void UnregisterAll(Events eventKey) {
 			EventMap[eventKey].Clear();
 		}
 	}

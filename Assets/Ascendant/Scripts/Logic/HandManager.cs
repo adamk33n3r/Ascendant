@@ -9,15 +9,10 @@ namespace Ascendant.Scripts.Logic {
         public int maxCount = 7;
 
 		private List<CardAsset> cards = new List<CardAsset>();
-        private Action<CardAsset> cbOnCardDrawn;
-
 		private Visual.HandManager visual;
 
 		public void Awake() {
 			Container.Register(this);
-			Events.Listen("test", (data) => {
-				print("test event was fired", data);
-			});
 		}
 
 		public void Start() {
@@ -29,7 +24,6 @@ namespace Ascendant.Scripts.Logic {
 				return false;
 			}
 			this.cards.Add(cardAsset);
-			this.cbOnCardDrawn(cardAsset);
 			return true;
 		}
 
@@ -46,12 +40,18 @@ namespace Ascendant.Scripts.Logic {
 			if (card == null) {
 				return null;
 			}
+			this.cards.Remove(card.CardAsset);
 			return card.CardAsset;
 		}
 
-		// TODO: Maybe just a global event system?
-		public void RegisterCardDrawnCallback(Action<CardAsset> callback) {
-			this.cbOnCardDrawn += callback;
+		public bool Discard() {
+			CardAsset cardAsset = TakeSelectedCard();
+			if (cardAsset == null) {
+				return false;
+			}
+			var discard = Container.Get<DiscardManager>();
+			discard.AddCard(cardAsset);
+			return true;
 		}
 	}
 }

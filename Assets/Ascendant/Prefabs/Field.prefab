@@ -4500,9 +4500,9 @@ MonoBehaviour:
     type: 2}
   Rows: 4
   Columns: 9
-  Width: 2.5
-  Height: 3.4
-  Padding: 0.25
+  Width: 3
+  Height: 5
+  Padding: 1
   cardPrefab: {fileID: 1341535301976706, guid: 4bd20da9c750d3c4187ad6b7fee52580, type: 2}
 --- !u!114 &114705811336229910
 MonoBehaviour:

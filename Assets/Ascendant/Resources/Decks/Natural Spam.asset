@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cards:
   - cardAsset: {fileID: 11400000, guid: 6de858de3a58ae747b5c0c42e8a91dc6, type: 2}
-    amount: 3
+    amount: 10
   - cardAsset: {fileID: 11400000, guid: e37d48292dd6c034b84e35391b4befd3, type: 2}
-    amount: 3
+    amount: 10
   - cardAsset: {fileID: 11400000, guid: 38b07df1996eff243978d33fd8c61da1, type: 2}
-    amount: 3
+    amount: 10

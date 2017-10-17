@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Ascendant.ScriptableObjects;
 using Ascendant.Scripts.Visual.Cards;
+using Ascendant.Scripts.Logic;
 using UnityEngine;
 
 namespace Ascendant.Scripts.Visual {
@@ -25,7 +26,7 @@ namespace Ascendant.Scripts.Visual {
 
 		public void Start() {
 			this.width = this.last.position.x - this.first.position.x;
-			this.logicHandManager.RegisterCardDrawnCallback(OnCardDrawn);
+			EventManager.Listen(Events.CARD_DRAWN, (data) => { OnCardDrawn((CardAsset) data); });
 		}
 
 		public CardManager GetSelectedCard() {
