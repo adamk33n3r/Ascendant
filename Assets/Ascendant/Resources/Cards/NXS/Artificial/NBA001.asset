@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: NBA001
   m_EditorClassIdentifier: 
   displayName: aaaaa
-  cost: 0
-  attack: 0
+  cost: 1
+  attack: 1
   defense: 0
   delay: 0
   superType: {fileID: 11400000, guid: 5d46a6c240bfdb74dada41e8a2fd2991, type: 2}
