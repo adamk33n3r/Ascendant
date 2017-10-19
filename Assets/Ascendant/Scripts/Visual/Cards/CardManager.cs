@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Ascendant.ScriptableObjects;
 using Ascendant.Scripts.Enums;
+using DG.Tweening;
 
 namespace Ascendant.Scripts.Visual.Cards {
     public class CardManager : BaseBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
@@ -27,6 +28,7 @@ namespace Ascendant.Scripts.Visual.Cards {
         public Image cardGraphic;
 
 		private float hoverDist = 1.5f;
+		private float animationTime = 0.25f;
 
 		private Action<CardManager> cbCardClicked;
 
@@ -67,13 +69,15 @@ namespace Ascendant.Scripts.Visual.Cards {
 		}
 
 		public void OnPointerEnter(PointerEventData eventData) {
-			this.transform.localScale = new Vector3(2, 2, 2);
-			this.transform.Translate(0, this.hoverDist, 0);
+			this.transform.DOComplete();
+			this.transform.DOMoveY(this.transform.position.y + this.hoverDist, this.animationTime);
+			this.transform.DOScale(2, this.animationTime);
 		}
 
 		public void OnPointerExit(PointerEventData eventData) {
-			this.transform.localScale = Vector3.one;
-			this.transform.Translate(0, -this.hoverDist, 0);
+			this.transform.DOComplete();
+			this.transform.DOMoveY(this.transform.position.y - this.hoverDist, this.animationTime);
+			this.transform.DOScale(1, this.animationTime);
 		}
 		#endregion
 	}
