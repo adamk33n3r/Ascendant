@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Ascendant.Scripts.Visual {
+namespace Ascendant.Visual {
 	public class FieldManager : BaseBehaviour {
 		public bool EnableGeneration = false;
 		public GameObject FieldLocationPrefab;

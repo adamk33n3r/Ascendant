@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using DG.Tweening;
 
-namespace Ascendant.Scripts.Logic.Commands {
+namespace Ascendant.Logic.Commands {
     public class LogCommand : Command {
         private readonly string text;
 

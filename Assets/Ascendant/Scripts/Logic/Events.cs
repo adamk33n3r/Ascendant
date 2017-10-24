@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Ascendant.Scripts.Logic {
+namespace Ascendant.Logic {
 	public delegate void EventDelegate(object data = null);
 	public delegate void UnregisterListenerDelegate();
 

@@ -1,9 +1,9 @@
 using Ascendant.ScriptableObjects;
-using Ascendant.Scripts.Utils;
+using Ascendant.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Editor.CardEditor {
+namespace Ascendant.Editor.CardEditor {
     public class SetChooserWindow : PopupWindowContent {
         private MainWindow main;
         private Set[] sets;

@@ -845,7 +845,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deckAsset: {fileID: 11400000, guid: cf6e39bfdc41b0e4fb4c6366acdd7710, type: 2}
-  visualDeckManager: {fileID: 0}
 --- !u!114 &662136475
 MonoBehaviour:
   m_ObjectHideFlags: 0

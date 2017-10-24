@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-namespace Ascendant.Scripts.Logic {
+namespace Ascendant.Logic {
 	public class Initialization : MonoBehaviour {
 		public int Seed = 0;
 

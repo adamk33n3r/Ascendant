@@ -3,7 +3,7 @@ using UnityEngine;
 
 using Ascendant.ScriptableObjects;
 
-namespace Ascendant.Scripts.Logic.Commands {
+namespace Ascendant.Logic.Commands {
 
 	/// <summary>
 	/// Ask HandManager for selected card.

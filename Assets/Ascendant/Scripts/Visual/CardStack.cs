@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using Ascendant.Scripts.Logic;
+using UnityEngine;
+using Ascendant.Logic;
 using TMPro;
 
-namespace Ascendant.Scripts.Visual {
+namespace Ascendant.Visual {
 	public class CardStack : BaseBehaviour {
         public float thicknessOfOneCard = 0.012f;
 		public bool down = true;

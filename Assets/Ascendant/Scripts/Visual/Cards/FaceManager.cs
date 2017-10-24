@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ascendant.Scripts.Visual.Cards {
+namespace Ascendant.Visual.Cards {
     public class FaceManager : MonoBehaviour {
         public GameObject frontFace;
         public GameObject backFace;

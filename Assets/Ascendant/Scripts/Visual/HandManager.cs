@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using Ascendant.ScriptableObjects;
-using Ascendant.Scripts.Visual.Cards;
-using Ascendant.Scripts.Logic;
+using Ascendant.Visual.Cards;
+using Ascendant.Logic;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Visual {
+namespace Ascendant.Visual {
     public class HandManager : MonoBehaviour {
 		public Logic.HandManager logicHandManager;
 

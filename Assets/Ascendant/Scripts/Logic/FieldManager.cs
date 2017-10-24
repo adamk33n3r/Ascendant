@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace Ascendant.Scripts.Logic {
+namespace Ascendant.Logic {
 	public class FieldManager : BaseBehaviour {
 		public int Rows = 4;
 		public int Columns = 9;

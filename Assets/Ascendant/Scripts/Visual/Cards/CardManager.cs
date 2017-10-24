@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Ascendant.ScriptableObjects;
-using Ascendant.Scripts.Enums;
+using Ascendant.Enums;
 using DG.Tweening;
 
-namespace Ascendant.Scripts.Visual.Cards {
+namespace Ascendant.Visual.Cards {
     public class CardManager : BaseBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
         public CardAsset CardAsset {
 			get { return this.cardAsset; }
@@ -41,11 +42,12 @@ namespace Ascendant.Scripts.Visual.Cards {
 		}
 
 		private void Start() {
+			print("card spawned");
 			// Get actual height of card
 			RectTransform rectTransform = this.transform.GetComponentInChildren<RectTransform>();
 			Rect rect = rectTransform.rect;
 			this.hoverDist = (rect.height * rectTransform.localScale.y) / 2;
-			print("hover dist:", this.hoverDist);
+			print("hover dist: " + this.hoverDist);
 		}
 
 		private void Setup(CardAsset cardAsset) {

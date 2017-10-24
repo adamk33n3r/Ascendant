@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Editor {
+namespace Ascendant.Editor {
     [CustomEditor(typeof(Deck))]
     public class ReorderableDeckList : UnityEditor.Editor {
         private ReorderableList reorderableList;

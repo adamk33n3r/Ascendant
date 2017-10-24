@@ -5,10 +5,10 @@ using Ascendant.ScriptableObjects;
 using UnityEditor;
 using UnityEngine;
 
-using Ascendant.Scripts.Enums;
-using Ascendant.Scripts.Utils;
+using Ascendant.Enums;
+using Ascendant.Utils;
 
-namespace Ascendant.Scripts.Editor.CardEditor {
+namespace Ascendant.Editor.CardEditor {
     public class MainWindow : EditorWindow {
         private Set selectedSet;
         private Table table;

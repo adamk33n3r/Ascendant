@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using Ascendant.ScriptableObjects;
 
-namespace Ascendant.Scripts.Logic {
+namespace Ascendant.Logic {
 	public class DiscardManager : BaseBehaviour {
         public Stack<CardAsset> Cards { get; protected set; }
 

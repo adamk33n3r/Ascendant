@@ -1,4 +1,4 @@
-namespace Ascendant.Scripts.Editor.CardEditor {
+namespace Ascendant.Editor.CardEditor {
     public class Cell {
         public object data;
 

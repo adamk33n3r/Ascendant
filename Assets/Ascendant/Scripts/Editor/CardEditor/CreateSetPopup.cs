@@ -1,9 +1,9 @@
 using Ascendant.ScriptableObjects;
-using Ascendant.Scripts.Utils;
+using Ascendant.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Editor.CardEditor {
+namespace Ascendant.Editor.CardEditor {
     public class CreateSetPopup : PopupWindowContent {
         private MainWindow main;
         private string setName;

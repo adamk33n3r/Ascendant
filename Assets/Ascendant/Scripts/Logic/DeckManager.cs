@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Ascendant.ScriptableObjects;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Logic {
+namespace Ascendant.Logic {
     public class DeckManager : MonoBehaviour {
         [Header("Assets")]
         [SerializeField]
@@ -11,10 +11,6 @@ namespace Ascendant.Scripts.Logic {
 		// TODO: Look into loading cards and decks from google docs
 
         protected HandManager handManager;
-
-        [Header("Visual References")]
-        [SerializeField]
-        protected Visual.DeckManager visualDeckManager;
 
 		protected Stack<CardAsset> Cards = new Stack<CardAsset>();
 		public int CardCount { get { return Cards.Count; } }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Logic {
+namespace Ascendant.Logic {
 	public class FieldLocationManager {
 		public CardAsset[] Cards { get; protected set; }
 

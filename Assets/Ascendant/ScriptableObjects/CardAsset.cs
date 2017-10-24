@@ -1,4 +1,4 @@
-using Ascendant.Scripts.Enums;
+using Ascendant.Enums;
 using UnityEngine;
 
 namespace Ascendant.ScriptableObjects {

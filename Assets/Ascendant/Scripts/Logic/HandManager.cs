@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ascendant.ScriptableObjects;
 
-namespace Ascendant.Scripts.Logic {
+namespace Ascendant.Logic {
 	public class HandManager : BaseBehaviour {
         [Header("Hand Info")]
         public int maxCount = 7;

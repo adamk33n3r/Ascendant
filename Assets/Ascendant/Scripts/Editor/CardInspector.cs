@@ -5,7 +5,7 @@ using NUnit.Framework.Constraints;
 using UnityEditor;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Editor {
+namespace Ascendant.Editor {
     [CustomEditor(typeof(CardAsset))]
     public class CardInspector : UnityEditor.Editor {
         private SuperType[] superTypes;

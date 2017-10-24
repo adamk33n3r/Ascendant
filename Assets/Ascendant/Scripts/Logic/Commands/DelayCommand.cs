@@ -2,7 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Logic.Commands {
+namespace Ascendant.Logic.Commands {
     public class DelayCommand : AsyncCommand {
         private readonly float delay;
 

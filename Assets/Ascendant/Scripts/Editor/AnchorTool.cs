@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Ascendant.Scripts {
+namespace Assets.Ascendant {
     public class AnchorTool {
         private static GameObject selectedGameObject;
 

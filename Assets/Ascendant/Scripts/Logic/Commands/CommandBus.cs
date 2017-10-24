@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Logic.Commands {
+namespace Ascendant.Logic.Commands {
     public class CommandBus : BaseBehaviour {
         private readonly Queue<Command> commandQueue = new Queue<Command>();
 		private bool commandIsRunning = false;

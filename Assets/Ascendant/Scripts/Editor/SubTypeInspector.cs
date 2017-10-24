@@ -3,7 +3,7 @@ using Ascendant.ScriptableObjects;
 using UnityEditor;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Editor {
+namespace Ascendant.Editor {
     [CustomEditor(typeof(SubType))]
     public class SubTypeInspector : UnityEditor.Editor {
         private SubType subType;

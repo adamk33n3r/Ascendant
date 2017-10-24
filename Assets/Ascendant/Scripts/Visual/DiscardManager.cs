@@ -1,7 +1,7 @@
-﻿using Ascendant.Scripts.Logic.Commands;
+using Ascendant.Logic.Commands;
 using UnityEngine.EventSystems;
 
-namespace Ascendant.Scripts.Visual {
+namespace Ascendant.Visual {
 	public class DiscardManager : BaseBehaviour, IPointerClickHandler {
 		private CommandBus bus;
 		private void Start () {

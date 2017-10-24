@@ -1,4 +1,4 @@
-namespace Ascendant.Scripts.Editor.CardEditor.CellType {
+namespace Ascendant.Editor.CardEditor.CellType {
     public class Int : CellType {
     }
 }

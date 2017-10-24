@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-using Ascendant.Scripts.Logic.Commands;
+using Ascendant.Logic.Commands;
 
-namespace Ascendant.Scripts.Visual {
+namespace Ascendant.Visual {
 	public class FieldLocationManager : BaseBehaviour, IPointerClickHandler {
 		public int X { get; protected set; }
 		public int Y { get; protected set; }

@@ -1,7 +1,7 @@
 using UnityEngine.EventSystems;
-using Ascendant.Scripts.Logic.Commands;
+using Ascendant.Logic.Commands;
 
-namespace Ascendant.Scripts.Visual {
+namespace Ascendant.Visual {
     public class DeckManager : BaseBehaviour, IPointerClickHandler {
 		private CommandBus bus;
 

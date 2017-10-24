@@ -1,4 +1,4 @@
-namespace Ascendant.Scripts.Enums {
+namespace Ascendant.Enums {
     public enum SubType {
         Artifact,
         Spell,

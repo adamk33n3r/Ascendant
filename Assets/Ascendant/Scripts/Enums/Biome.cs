@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ascendant.Scripts.Enums {
+namespace Ascendant.Enums {
     public enum Biome {
         Neutral,
         Primal,

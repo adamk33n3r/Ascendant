@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Ascendant.Scripts.Editor.CardEditor.CellType;
+using Ascendant.Editor.CardEditor.CellType;
 using UnityEditor;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Editor.CardEditor {
+namespace Ascendant.Editor.CardEditor {
     public class Table {
         public IList<IList<Cell>> Rows {
             get { return this.rows; }

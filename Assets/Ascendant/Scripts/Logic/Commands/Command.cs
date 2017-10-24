@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Ascendant.Scripts.Logic.Commands {
+namespace Ascendant.Logic.Commands {
     public abstract class Command {
         public virtual void Execute() {
         }
