@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Ascendant/Scenes/Main.unity
+    path: Assets/Ascendant/Scenes/_preload.unity
+    guid: 7d24410ca862de642bae6686593d2801
+  - enabled: 1
+    path: Assets/Ascendant/Scenes/MainMenu.unity
     guid: 577de86b32b405a4695f531031d51476
   - enabled: 1
     path: Assets/Ascendant/Scenes/Board.unity
     guid: 102e6b5675075f346bdc26938724137b
+  - enabled: 1
+    path: Assets/Ascendant/Scenes/DialogTest.unity
+    guid: 4af97ef47d3bf3b4f81def66461ef452

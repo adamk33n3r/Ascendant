@@ -18,12 +18,12 @@ MonoBehaviour:
   m_fontInfo:
     Name: Cinzel Decorative
     PointSize: 141
-    Scale: 0
+    Scale: 1
     CharacterCount: 96
     LineHeight: 190.0625
     Baseline: 0
     Ascender: 137.625
-    CapHeight: 0
+    CapHeight: 117.1875
     Descender: -52.4375
     CenterLine: 0
     SuperscriptOffset: 137.625
@@ -33,7 +33,7 @@ MonoBehaviour:
     UnderlineThickness: 7.05
     strikethrough: 30.977272
     strikethroughThickness: 7.05
-    TabWidth: 0
+    TabWidth: 352.5
     Padding: 5
     AtlasWidth: 1024
     AtlasHeight: 1024
@@ -42,10 +42,10 @@ MonoBehaviour:
   - id: 32
     x: 6
     y: 1029
-    width: 0
-    height: 0
+    width: 35.25
+    height: 190.0625
     xOffset: 0
-    yOffset: 0
+    yOffset: 137.625
     xAdvance: 35.25
     scale: 1
   - id: 33
@@ -1002,10 +1002,10 @@ Material:
     - _FaceDilate: 0
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
-    - _GlowInner: 0.05
-    - _GlowOffset: 0
-    - _GlowOuter: 0.05
-    - _GlowPower: 0.75
+    - _GlowInner: 0
+    - _GlowOffset: -0.067
+    - _GlowOuter: 1
+    - _GlowPower: 1
     - _GradientScale: 6
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
@@ -1042,7 +1042,7 @@ Material:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
+    - _GlowColor: {r: 0, g: 1, b: 0.08965516, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}

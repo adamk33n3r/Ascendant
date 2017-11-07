@@ -6,7 +6,7 @@ using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 
 namespace Ascendant.Network {
-	internal sealed class JoinGame : BaseBehaviour {
+	public sealed class JoinGame : BaseBehaviour {
 		public Text RoomNameText;
 
 		private List<MatchInfoSnapshot> matchList;

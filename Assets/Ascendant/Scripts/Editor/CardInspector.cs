@@ -30,17 +30,13 @@ namespace Ascendant.Editor {
         }
 
         public override void OnInspectorGUI() {
-            EditorGUI.BeginChangeCheck();
+			Undo.RecordObject(this.target, "Inspector");
             DrawDefaultInspector();
             GetFilteredSubTypes();
             this.superTypeIndex = EditorGUILayout.Popup("SuperType", this.superTypeIndex, this.superTypeNames);
             this.subTypeIndex = EditorGUILayout.Popup("SubType", this.subTypeIndex, this.subTypeNames);
             this.cardAsset.superType = this.superTypeIndex <= this.superTypes.Length - 1 ? this.superTypes[this.superTypeIndex] : null;
             this.cardAsset.subType = this.subTypeIndex <= this.subTypes.Length - 1 ? this.subTypes[this.subTypeIndex] : null;
-
-            if (EditorGUI.EndChangeCheck()) {
-                EditorUtility.SetDirty(this.target);
-            }
         }
 
         private void GetFilteredSubTypes() {
